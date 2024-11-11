@@ -4,6 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 import { fetchCharacters } from "../api/charactersApi.jsx";
+import HeroesLayout from "../layouts/HeroesLayout.jsx";
 
 const Heroes = () => {
   const [page, setPage] = useState(1);
@@ -23,7 +24,7 @@ const Heroes = () => {
   return (
     <Box
       sx={{
-        height: 600,
+        height: 400,
         width: "100%",
         "& .MuiDataGrid-row": { cursor: "pointer" },
       }}
@@ -43,6 +44,7 @@ const Heroes = () => {
         loading={loading}
         onRowClick={(params) => navigate(`/heroes/${params.id}`)}
       />
+      <HeroesLayout />
     </Box>
   );
 };

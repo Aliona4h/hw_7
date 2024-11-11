@@ -7,7 +7,9 @@ import { fetchCharacterById } from "../api/charactersApi.jsx";
 const HeroDetail = () => {
   const { id } = useParams();
 
-  const { data, error, loading } = useRequest(() => fetchCharacterById(id));
+  const { data, error, loading } = useRequest(() => fetchCharacterById(id), {
+    refreshDeps: [id],
+  });
 
   if (loading) return <CircularProgress />;
   if (error) return <p>Error fetching character details: {error.message}</p>;
